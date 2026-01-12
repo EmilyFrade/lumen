@@ -21,11 +21,7 @@ function Register() {
         setLoading(true);
 
         try {
-            await register({
-                nome: name,
-                email,
-                senha: password
-            });
+            await register({ name, email, password });
 
             setSuccess("Conta criada com sucesso!");
             setTimeout(() => navigate("/"), 1500);
