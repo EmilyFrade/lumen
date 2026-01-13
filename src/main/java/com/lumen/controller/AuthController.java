@@ -17,4 +17,9 @@ public class AuthController {
     public User register(@RequestBody User user) {
         return userService.register(user);
     }
+
+    @GetMapping("/me")
+    public User getCurrentUser() {
+        return userService.getCurrentUser();
+    }
 }
