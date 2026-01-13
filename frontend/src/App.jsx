@@ -3,6 +3,7 @@ import Login from "./pages/Login";
 import { AuthProvider } from "./context/AuthContext";
 import PrivateRoute from "./components/PrivateRoute";
 import Register from "./pages/Register";
+import Courses from "./pages/Courses";
 
 function App() {
     return (
@@ -14,7 +15,7 @@ function App() {
                     <Route
                         path="/courses"
                         element={
-                            <PrivateRoute><h1>Meus Cursos</h1></PrivateRoute>
+                            <PrivateRoute><Courses /></PrivateRoute>
                         }
                     />
                 </Routes>
