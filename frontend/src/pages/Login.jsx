@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthCard from "../components/AuthCard";
-import { login } from "../services/authService";
 import { useAuth } from "../context/AuthContext";
 
 function Login() {
     const navigate = useNavigate();
-    const { login: authLogin } = useAuth();
+    const { login } = useAuth();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -20,7 +19,6 @@ function Login() {
 
         try {
             await login(email, password);
-            authLogin();
             navigate("/courses");
         } catch {
             setError("Email ou senha inválidos");
