@@ -1,6 +1,8 @@
 package com.lumen.controller;
 
+import com.lumen.dto.CourseDTO;
 import com.lumen.model.Course;
+import com.lumen.model.enums.Category;
 import com.lumen.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,8 +18,8 @@ public class CourseController {
     private CourseService courseService;
 
     @PostMapping
-    public Course create(@RequestBody Course course) {
-        return courseService.create(course);
+    public Course create(@RequestBody CourseDTO courseDTO) {
+        return courseService.create(courseDTO);
     }
 
     @GetMapping
@@ -30,14 +32,14 @@ public class CourseController {
         return courseService.findById(id);
     }
 
-    @GetMapping("/category/{categoryId}")
-    public List<Course> findByCategory(@PathVariable Long categoryId) {
-        return courseService.findByCategory(categoryId);
+    @GetMapping("/category/{category}")
+    public List<Course> findByCategory(@PathVariable Category category) {
+        return courseService.findByCategory(category);
     }
 
     @PutMapping("/{id}")
-    public Course update(@PathVariable Long id, @RequestBody Course course) {
-        return courseService.update(id, course);
+    public Course update(@PathVariable Long id, @RequestBody CourseDTO courseDTO) {
+        return courseService.update(id, courseDTO);
     }
 
     @DeleteMapping("/{id}")
