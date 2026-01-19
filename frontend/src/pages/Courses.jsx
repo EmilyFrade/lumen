@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 import SummaryCard from "../components/SummaryCard";
 import EmptyState from "../components/EmptyState";
@@ -5,6 +6,7 @@ import EmptyState from "../components/EmptyState";
 function Courses() {
 
     const courses = [];
+    const navigate = useNavigate();
 
     return (
         <MainLayout>
@@ -36,11 +38,10 @@ function Courses() {
 
                     <button
                         className="btn btn-primary"
+                        onClick={() => navigate("/courses/add")}
                         style={{
                             background: "linear-gradient(90deg, #7c3aed, #4f46e5)",
-                            border: "none",
-                            whiteSpace: "nowrap",
-                            flexShrink: 0
+                            border: "none"
                         }}
                     >
                         + Adicionar curso
@@ -49,7 +50,7 @@ function Courses() {
             </div>
 
             {courses.length === 0 && (
-                <EmptyState onAdd={() => alert("Abrir modal de curso")} />
+                <EmptyState onAdd={() => navigate("/courses/add")} />
             )}
 
         </MainLayout>
