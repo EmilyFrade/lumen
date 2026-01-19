@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Form, Alert } from "react-bootstrap";
+import { Button, Form, Alert, Card } from "react-bootstrap";
 import MainLayout from "../layouts/MainLayout";
 import { createCourse } from "../services/courseService";
 
@@ -84,17 +84,19 @@ function AddCourse() {
             <div className="container-fluid px-3 py-2">
                 <div className="row">
                     <div className="col-12">
-                        <div className="mb-2">
-                            <h5 className="mb-1">Adicionar curso ao gerenciador</h5>
-                        </div>
+                        <Card className="border-0 shadow-sm">
+                            <Card.Header className="bg-white border-bottom">
+                                <h5 className="mb-0">Adicionar curso ao gerenciador</h5>
+                            </Card.Header>
 
-                        {error && (
-                            <Alert variant="danger" dismissible onClose={() => setError(null)} className="mb-2">
-                                {error}
-                            </Alert>
-                        )}
+                            <Card.Body>
+                                {error && (
+                                    <Alert variant="danger" dismissible onClose={() => setError(null)} className="mb-2">
+                                        {error}
+                                    </Alert>
+                                )}
 
-                        <Form onSubmit={handleSubmit}>
+                                <Form onSubmit={handleSubmit}>
                             <div className="row">
                                 <div className="col-lg-6 mb-2">
                                     <Form.Group>
@@ -298,7 +300,9 @@ function AddCourse() {
                                     </div>
                                 </div>
                             </div>
-                        </Form>
+                                </Form>
+                            </Card.Body>
+                        </Card>
                     </div>
                 </div>
             </div>
