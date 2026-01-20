@@ -90,7 +90,7 @@ function Courses() {
     };
 
     const handleEdit = (id) => {
-        navigate(`/courses/add`);
+        navigate(`/courses/edit/${id}`);
     };
 
     const totalCourses = courses.length;
