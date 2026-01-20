@@ -1,5 +1,6 @@
 package com.lumen.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.lumen.model.enums.Category;
 import com.lumen.model.enums.CourseStatus;
 import jakarta.persistence.*;
@@ -33,6 +34,7 @@ public class Course {
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
+    @JsonIgnore
     private User user;
 
     @Enumerated(EnumType.STRING)
