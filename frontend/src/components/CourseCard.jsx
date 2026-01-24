@@ -1,4 +1,4 @@
-function CourseCard({ course, onDetails, onEdit, onDelete }) {
+function CourseCard({ course, onEdit, onDelete }) {
     const getStatusColor = (status) => {
         switch (status) {
             case "IN_PROGRESS":
@@ -174,13 +174,6 @@ function CourseCard({ course, onDetails, onEdit, onDelete }) {
                 )}
 
                 <div className="mt-auto d-flex gap-2 flex-wrap">
-                    <button
-                        className="btn btn-sm btn-outline-primary"
-                        onClick={() => onDetails(course.id)}
-                        style={{ flex: "1 1 auto", minWidth: "100px" }}
-                    >
-                        Detalhes
-                    </button>
                     <button
                         className="btn btn-sm btn-outline-secondary"
                         onClick={() => onEdit(course.id)}

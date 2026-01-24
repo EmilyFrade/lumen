@@ -88,16 +88,17 @@ public class CourseService {
         existing.setDuration(courseDTO.getDuration());
         existing.setPaid(courseDTO.getPaid() != null ? courseDTO.getPaid() : false);
         existing.setPrice(courseDTO.getPrice());
+        existing.setNotes(courseDTO.getNotes());
 
         existing.getModules().clear();
         if (courseDTO.getModules() != null && !courseDTO.getModules().isEmpty()) {
-            List<Module> modules = courseDTO.getModules().stream()
-                    .map(moduleName -> Module.builder()
-                            .name(moduleName)
-                            .course(existing)
-                            .build())
-                    .collect(Collectors.toList());
-            existing.setModules(modules);
+            courseDTO.getModules().forEach(moduleName -> {
+                Module module = Module.builder()
+                        .name(moduleName)
+                        .course(existing)
+                        .build();
+                existing.getModules().add(module);
+            });
         }
 
         return courseRepository.save(existing);

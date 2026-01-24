@@ -5,6 +5,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import Register from "./pages/Register";
 import Courses from "./pages/Courses";
 import AddCourse from "./pages/AddCourse";
+import EditCourse from "./pages/EditCourse";
 
 function App() {
     return (
@@ -23,6 +24,12 @@ function App() {
                         path="/courses/add"
                         element={
                             <PrivateRoute><AddCourse /></PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path="/courses/edit/:id"
+                        element={
+                            <PrivateRoute><EditCourse /></PrivateRoute>
                         }
                     />
                 </Routes>
