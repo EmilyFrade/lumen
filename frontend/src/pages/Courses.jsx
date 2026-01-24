@@ -70,25 +70,6 @@ function Courses() {
         }
     };
 
-    const handleDetails = (id) => {
-        const course = courses.find(c => c.id === id);
-        if (course) {
-            const info = [
-                `Título: ${course.title}`,
-                course.description ? `Descrição: ${course.description}` : null,
-                `Categoria: ${course.category}`,
-                `Status: ${course.status}`,
-                course.instructor ? `Instrutor: ${course.instructor}` : null,
-                course.duration ? `Duração: ${course.duration}` : null,
-                `Preço: ${course.paid ? (course.price ? `R$ ${parseFloat(course.price).toFixed(2).replace(".", ",")}` : "Pago") : "Gratuito"}`,
-                `Progresso: ${course.progress}%`,
-                course.rating ? `Avaliação: ${course.rating}/5` : null
-            ].filter(Boolean).join("\n");
-            
-            alert(info);
-        }
-    };
-
     const handleEdit = (id) => {
         navigate(`/courses/edit/${id}`);
     };
@@ -198,7 +179,6 @@ function Courses() {
                         <div key={course.id} className="col-lg-4 col-md-6">
                             <CourseCard
                                 course={course}
-                                onDetails={handleDetails}
                                 onEdit={handleEdit}
                                 onDelete={handleDelete}
                             />
@@ -206,7 +186,6 @@ function Courses() {
                     ))}
                 </div>
             )}
-
         </MainLayout>
     );
 }
