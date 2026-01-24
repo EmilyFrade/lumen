@@ -88,6 +88,7 @@ public class CourseService {
         existing.setDuration(courseDTO.getDuration());
         existing.setPaid(courseDTO.getPaid() != null ? courseDTO.getPaid() : false);
         existing.setPrice(courseDTO.getPrice());
+        existing.setNotes(courseDTO.getNotes());
 
         existing.getModules().clear();
         if (courseDTO.getModules() != null && !courseDTO.getModules().isEmpty()) {

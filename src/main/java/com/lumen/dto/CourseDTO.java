@@ -31,5 +31,7 @@ public class CourseDTO {
     private BigDecimal price;
 
     private List<String> modules;
+
+    private String notes;
 }
 
