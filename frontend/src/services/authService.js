@@ -5,7 +5,7 @@ export async function login(email, password) {
     
     const token = btoa(`${email}:${password}`);
 
-    await api.get("/categories", {
+    await api.get("/courses", {
         headers: {
             Authorization: `Basic ${token}`
         }
