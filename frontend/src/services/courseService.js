@@ -24,8 +24,3 @@ export async function deleteCourse(id) {
     await api.delete(`/courses/${id}`);
 }
 
-export async function getCoursesByCategory(category) {
-    const response = await api.get(`/courses/category/${category}`);
-    return response.data;
-}
-
