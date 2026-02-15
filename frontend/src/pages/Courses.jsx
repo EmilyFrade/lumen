@@ -4,6 +4,7 @@ import MainLayout from "../layouts/MainLayout";
 import SummaryCard from "../components/SummaryCard";
 import EmptyState from "../components/EmptyState";
 import CourseCard from "../components/CourseCard";
+import DeleteCourseModal from "../components/DeleteCourseModal";
 import { getCourses, deleteCourse } from "../services/courseService";
 
 function Courses() {
@@ -13,6 +14,9 @@ function Courses() {
     const [searchTerm, setSearchTerm] = useState("");
     const [categoryFilter, setCategoryFilter] = useState("ALL");
     const [loading, setLoading] = useState(true);
+    const [deleteModal, setDeleteModal] = useState({ show: false, course: null });
+    const [deleting, setDeleting] = useState(false);
+    const [deleteError, setDeleteError] = useState(null);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -58,15 +62,36 @@ function Courses() {
         setFilteredCourses(filtered);
     };
 
-    const handleDelete = async (id) => {
-        if (window.confirm("Tem certeza que deseja excluir este curso?")) {
-            try {
-                await deleteCourse(id);
-                await loadCourses();
-            } catch (error) {
-                console.error("Erro ao excluir curso:", error);
-                alert("Erro ao excluir curso. Tente novamente.");
-            }
+    const handleDeleteClick = (id) => {
+        const course = courses.find(c => c.id === id);
+        if (course) {
+            setDeleteError(null);
+            setDeleteModal({ show: true, course });
+        }
+    };
+
+    const handleDeleteClose = () => {
+        if (!deleting) {
+            setDeleteModal({ show: false, course: null });
+            setDeleteError(null);
+        }
+    };
+
+    const handleDeleteConfirm = async () => {
+        if (!deleteModal.course) return;
+
+        setDeleting(true);
+        setDeleteError(null);
+
+        try {
+            await deleteCourse(deleteModal.course.id);
+            setDeleteModal({ show: false, course: null });
+            await loadCourses();
+        } catch (error) {
+            console.error("Erro ao excluir curso:", error);
+            setDeleteError(error.response?.data?.message || "Erro ao excluir curso. Tente novamente.");
+        } finally {
+            setDeleting(false);
         }
     };
 
@@ -180,12 +205,21 @@ function Courses() {
                             <CourseCard
                                 course={course}
                                 onEdit={handleEdit}
-                                onDelete={handleDelete}
+                                onDelete={handleDeleteClick}
                             />
                         </div>
                     ))}
                 </div>
             )}
+
+            <DeleteCourseModal
+                show={deleteModal.show}
+                course={deleteModal.course}
+                loading={deleting}
+                error={deleteError}
+                onClose={handleDeleteClose}
+                onConfirm={handleDeleteConfirm}
+            />
         </MainLayout>
     );
 }

@@ -122,7 +122,7 @@ function CourseCard({ course, onEdit, onDelete }) {
                     </p>
                 )}
 
-                <div className="mb-3">
+                <div className="mb-2">
                     <div className="d-flex flex-wrap gap-3 small text-muted mb-2">
                         <span>
                             <strong>Preço:</strong> {formatPrice(course.paid, course.price)}
@@ -137,14 +137,28 @@ function CourseCard({ course, onEdit, onDelete }) {
                                 <strong>Instrutor:</strong> {course.instructor}
                             </span>
                         )}
+                        {course.accessLink && (
+                            <span>
+                                <strong>Link:</strong>{" "}
+                                <a
+                                    href={course.accessLink}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-decoration-none"
+                                    style={{ color: "#4f46e5" }}
+                                >
+                                    Acessar curso
+                                </a>
+                            </span>
+                        )}
                     </div>
                 </div>
 
                 {(course.status === "IN_PROGRESS" || course.status === "COMPLETED") && (
                     <div className="mb-3">
                         <div className="d-flex justify-content-between align-items-center mb-1">
-                            <small className="text-muted">Progresso</small>
-                            <small className="text-muted fw-bold">{course.progress}%</small>
+                            <small className="text-muted fw-bold">Progresso</small>
+                            <small className="text-muted">{course.progress}%</small>
                         </div>
                         <div className="progress" style={{ height: "8px" }}>
                             <div

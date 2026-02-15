@@ -32,6 +32,7 @@ public class CourseService {
                 .duration(courseDTO.getDuration())
                 .paid(courseDTO.getPaid() != null ? courseDTO.getPaid() : false)
                 .price(courseDTO.getPrice())
+                .accessLink(courseDTO.getAccessLink())
                 .progress(0)
                 .user(userService.getCurrentUser())
                 .build();
@@ -89,6 +90,7 @@ public class CourseService {
         existing.setPaid(courseDTO.getPaid() != null ? courseDTO.getPaid() : false);
         existing.setPrice(courseDTO.getPrice());
         existing.setNotes(courseDTO.getNotes());
+        existing.setAccessLink(courseDTO.getAccessLink());
 
         existing.getModules().clear();
         if (courseDTO.getModules() != null && !courseDTO.getModules().isEmpty()) {

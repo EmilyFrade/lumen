@@ -62,4 +62,7 @@ public class Course {
 
     @Column(columnDefinition = "TEXT")
     private String notes;
+
+    @Column(columnDefinition = "TEXT")
+    private String accessLink;
 }
