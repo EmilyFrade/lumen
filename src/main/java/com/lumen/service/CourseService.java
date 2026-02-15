@@ -3,7 +3,6 @@ package com.lumen.service;
 import com.lumen.dto.CourseDTO;
 import com.lumen.model.Course;
 import com.lumen.model.Module;
-import com.lumen.model.enums.Category;
 import com.lumen.repository.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -69,10 +68,6 @@ public class CourseService {
         }
         
         return course;
-    }
-
-    public List<Course> findByCategory(Category category) {
-        return courseRepository.findByCategoryAndUserId(category, userService.getCurrentUser().getId());
     }
 
     @Transactional
