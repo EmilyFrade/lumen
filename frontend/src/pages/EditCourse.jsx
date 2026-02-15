@@ -17,6 +17,7 @@ function EditCourse() {
         duration: "",
         paid: false,
         price: "0",
+        accessLink: "",
         modules: []
     });
     const [moduleName, setModuleName] = useState("");
@@ -50,6 +51,7 @@ function EditCourse() {
                 duration: courseData.duration || "",
                 paid: courseData.paid || false,
                 price: courseData.price ? courseData.price.toString() : "0",
+                accessLink: courseData.accessLink || "",
                 modules: moduleNames
             });
             
@@ -187,6 +189,7 @@ function EditCourse() {
                 duration: course.duration || null,
                 paid: course.paid,
                 price: course.paid && course.price ? parseFloat(course.price) : null,
+                accessLink: course.accessLink?.trim() || null,
                 modules: course.modules || [],
                 progress: progress,
                 rating: rating > 0 ? rating : null,
@@ -362,6 +365,21 @@ function EditCourse() {
                                                     value={course.duration}
                                                     onChange={handleChange}
                                                     placeholder="Ex: 10h, 4 semanas"
+                                                />
+                                            </Form.Group>
+                                        </div>
+                                    </div>
+
+                                    <div className="row mb-3">
+                                        <div className="col-12 mb-2">
+                                            <Form.Group>
+                                                <Form.Label className="mb-1 fw-bold">Link de acesso</Form.Label>
+                                                <Form.Control
+                                                    type="url"
+                                                    name="accessLink"
+                                                    value={course.accessLink}
+                                                    onChange={handleChange}
+                                                    placeholder="https://..."
                                                 />
                                             </Form.Group>
                                         </div>

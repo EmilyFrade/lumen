@@ -16,6 +16,7 @@ function AddCourse() {
         duration: "",
         paid: false,
         price: "0",
+        accessLink: "",
         modules: []
     });
 
@@ -63,6 +64,7 @@ function AddCourse() {
                 duration: course.duration || null,
                 paid: course.paid,
                 price: course.paid && course.price ? parseFloat(course.price) : null,
+                accessLink: course.accessLink?.trim() || null,
                 modules: course.modules || []
             };
 
@@ -184,6 +186,21 @@ function AddCourse() {
                                             value={course.duration}
                                             onChange={handleChange}
                                             placeholder="Ex: 10h, 4 semanas"
+                                        />
+                                    </Form.Group>
+                                </div>
+                            </div>
+
+                            <div className="row">
+                                <div className="col-12 mb-2">
+                                    <Form.Group>
+                                        <Form.Label className="mb-1">Link de acesso</Form.Label>
+                                        <Form.Control
+                                            type="url"
+                                            name="accessLink"
+                                            value={course.accessLink}
+                                            onChange={handleChange}
+                                            placeholder="https://..."
                                         />
                                     </Form.Group>
                                 </div>
