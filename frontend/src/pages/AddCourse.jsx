@@ -99,224 +99,215 @@ function AddCourse() {
                                 )}
 
                                 <Form onSubmit={handleSubmit}>
-                            <div className="row">
-                                <div className="col-lg-6 mb-2">
-                                    <Form.Group>
-                                        <Form.Label className="mb-1">Nome do curso *</Form.Label>
-                                        <Form.Control
-                                            name="title"
-                                            value={course.title}
-                                            onChange={handleChange}
-                                            placeholder="Ex: Introdução ao React"
-                                            required
-                                        />
-                                    </Form.Group>
-                                </div>
-
-                                <div className="col-lg-3 mb-2">
-                                    <Form.Group>
-                                        <Form.Label className="mb-1">Categoria *</Form.Label>
-                                        <Form.Select
-                                            name="category"
-                                            value={course.category}
-                                            onChange={handleChange}
-                                            required
-                                        >
-                                            <option value="">Selecione</option>
-                                            <option value="TECH">Tecnologia</option>
-                                            <option value="BUSINESS">Negócios</option>
-                                            <option value="DESIGN">Design</option>
-                                            <option value="MARKETING">Marketing</option>
-                                            <option value="DATA">Dados</option>
-                                            <option value="PERSONAL_DEVELOPMENT">Desenvolvimento Pessoal</option>
-                                            <option value="LANGUAGES">Idiomas</option>
-                                        </Form.Select>
-                                    </Form.Group>
-                                </div>
-
-                                <div className="col-lg-3 mb-2">
-                                    <Form.Group>
-                                        <Form.Label className="mb-1">Status *</Form.Label>
-                                        <Form.Select
-                                            name="status"
-                                            value={course.status}
-                                            onChange={handleChange}
-                                            required
-                                        >
-                                            <option value="INTEREST">Interesse</option>
-                                            <option value="IN_PROGRESS">Em andamento</option>
-                                            <option value="COMPLETED">Concluído</option>
-                                        </Form.Select>
-                                    </Form.Group>
-                                </div>
-                            </div>
-
-                            <div className="row">
-                                <div className="col-lg-6 mb-2">
-                                    <Form.Group>
-                                        <Form.Label className="mb-1">Descrição</Form.Label>
-                                        <Form.Control
-                                            as="textarea"
-                                            rows={2}
-                                            name="description"
-                                            value={course.description}
-                                            onChange={handleChange}
-                                            placeholder="Descreva brevemente o conteúdo do curso..."
-                                        />
-                                    </Form.Group>
-                                </div>
-
-                                <div className="col-lg-3 mb-2">
-                                    <Form.Group>
-                                        <Form.Label className="mb-1">Instrutor/Plataforma</Form.Label>
-                                        <Form.Control
-                                            name="instructor"
-                                            value={course.instructor}
-                                            onChange={handleChange}
-                                            placeholder="Ex: Udemy, Maria Silva"
-                                        />
-                                    </Form.Group>
-                                </div>
-
-                                <div className="col-lg-3 mb-2">
-                                    <Form.Group>
-                                        <Form.Label className="mb-1">Duração estimada</Form.Label>
-                                        <Form.Control
-                                            name="duration"
-                                            value={course.duration}
-                                            onChange={handleChange}
-                                            placeholder="Ex: 10h, 4 semanas"
-                                        />
-                                    </Form.Group>
-                                </div>
-                            </div>
-
-                            <div className="row">
-                                <div className="col-12 mb-2">
-                                    <Form.Group>
-                                        <Form.Label className="mb-1">Link de acesso</Form.Label>
-                                        <Form.Control
-                                            type="url"
-                                            name="accessLink"
-                                            value={course.accessLink}
-                                            onChange={handleChange}
-                                            placeholder="https://..."
-                                        />
-                                    </Form.Group>
-                                </div>
-                            </div>
-
-                            <div className="row">
-                                <div className="col-lg-3 mb-2">
-                                    <Form.Group>
-                                        <Form.Label className="mb-1">Curso pago</Form.Label>
-                                        <Form.Check
-                                            type="switch"
-                                            name="paid"
-                                            checked={course.paid}
-                                            onChange={handleChange}
-                                            label={course.paid ? "Sim" : "Não"}
-                                        />
-                                    </Form.Group>
-                                </div>
-
-                                {course.paid && (
-                                    <div className="col-lg-3 mb-2">
-                                        <Form.Group>
-                                            <Form.Label className="mb-1">Valor Pago (R$)</Form.Label>
-                                            <Form.Control
-                                                type="number"
-                                                step="0.01"
-                                                min="0"
-                                                name="price"
-                                                value={course.price}
-                                                onChange={handleChange}
-                                                placeholder="0.00"
-                                            />
-                                        </Form.Group>
-                                    </div>
-                                )}
-                            </div>
-
-                            <div className="row">
-                                <div className="col-12 mb-2">
-                                    <Form.Group>
-                                        <Form.Label className="mb-1">Módulos do Curso (Opcional)</Form.Label>
-                                        <div className="d-flex mb-1" style={{ gap: "0.5rem" }}>
-                                            <Form.Control
-                                                type="text"
-                                                size="sm"
-                                                value={moduleName}
-                                                onChange={(e) => setModuleName(e.target.value)}
-                                                onKeyPress={(e) => {
-                                                    if (e.key === "Enter") {
-                                                        e.preventDefault();
-                                                        handleAddModule();
-                                                    }
-                                                }}
-                                                placeholder="Nome do módulo"
-                                                style={{ flex: 1 }}
-                                            />
-                                            <Button
-                                                type="button"
-                                                variant="outline-primary"
-                                                size="sm"
-                                                onClick={handleAddModule}
-                                                style={{ minWidth: "40px" }}
-                                            >
-                                                +
-                                            </Button>
+                                    <div className="row mb-2">
+                                        <div className="col-lg-6 mb-2">
+                                            <Form.Group>
+                                                <Form.Label className="mb-1 fw-bold">Nome do curso *</Form.Label>
+                                                <Form.Control
+                                                    name="title"
+                                                    value={course.title}
+                                                    onChange={handleChange}
+                                                    placeholder="Ex: Introdução ao React"
+                                                    required
+                                                />
+                                            </Form.Group>
                                         </div>
-                                        {course.modules.length > 0 && (
-                                            <div className="row mt-1 g-1">
-                                                {course.modules.map((module, index) => (
-                                                    <div key={index} className="col-md-4 col-lg-3">
-                                                        <div
-                                                            className="d-flex align-items-center justify-content-between p-1"
-                                                            style={{
-                                                                backgroundColor: "#f7f5ff",
-                                                                borderRadius: "4px"
-                                                            }}
-                                                        >
-                                                            <span className="text-truncate me-1 small">{module}</span>
+
+                                        <div className="col-lg-2 mb-2">
+                                            <Form.Group>
+                                                <Form.Label className="mb-1 fw-bold">Categoria *</Form.Label>
+                                                <Form.Select
+                                                    name="category"
+                                                    value={course.category}
+                                                    onChange={handleChange}
+                                                    required
+                                                >
+                                                    <option value="">Selecione</option>
+                                                    <option value="TECH">Tecnologia</option>
+                                                    <option value="BUSINESS">Negócios</option>
+                                                    <option value="DESIGN">Design</option>
+                                                    <option value="MARKETING">Marketing</option>
+                                                    <option value="DATA">Dados</option>
+                                                    <option value="PERSONAL_DEVELOPMENT">Desenvolvimento Pessoal</option>
+                                                    <option value="LANGUAGES">Idiomas</option>
+                                                </Form.Select>
+                                            </Form.Group>
+                                        </div>
+
+                                        <div className="col-lg-2 mb-2">
+                                            <Form.Group>
+                                                <Form.Label className="mb-1 fw-bold">Status *</Form.Label>
+                                                <Form.Select
+                                                    name="status"
+                                                    value={course.status}
+                                                    onChange={handleChange}
+                                                    required
+                                                >
+                                                    <option value="INTEREST">Interesse</option>
+                                                    <option value="IN_PROGRESS">Em andamento</option>
+                                                    <option value="COMPLETED">Concluído</option>
+                                                </Form.Select>
+                                            </Form.Group>
+                                        </div>
+
+                                        <div className="col-lg-2 mb-2">
+                                            <Form.Group>
+                                                <Form.Label className="mb-1 fw-bold">Instrutor/Plataforma</Form.Label>
+                                                <Form.Control
+                                                    name="instructor"
+                                                    value={course.instructor}
+                                                    onChange={handleChange}
+                                                    placeholder="Ex: Udemy, Maria Silva"
+                                                />
+                                            </Form.Group>
+                                        </div>
+                                    </div>
+
+                                    <div className="row mb-2">
+                                        <div className="col-lg-6 mb-2">
+                                            <Form.Group>
+                                                <Form.Label className="mb-1 fw-bold">Descrição</Form.Label>
+                                                <Form.Control
+                                                    as="textarea"
+                                                    rows={2}
+                                                    name="description"
+                                                    value={course.description}
+                                                    onChange={handleChange}
+                                                    placeholder="Descreva brevemente o conteúdo do curso..."
+                                                />
+                                            </Form.Group>
+                                        </div>
+
+                                        <div className="col-lg-2 mb-2">
+                                            <Form.Group>
+                                                <Form.Label className="mb-1 fw-bold">Curso pago</Form.Label>
+                                                <Form.Check
+                                                    type="switch"
+                                                    name="paid"
+                                                    checked={course.paid}
+                                                    onChange={handleChange}
+                                                    label={course.paid ? "Sim" : "Não"}
+                                                />
+                                            </Form.Group>
+                                        </div>
+
+                                        <div className="col-lg-2 mb-2">
+                                            <Form.Group>
+                                                <Form.Label className="mb-1 fw-bold">Valor Pago (R$)</Form.Label>
+                                                <Form.Control
+                                                    type="number"
+                                                    step="0.01"
+                                                    min="0"
+                                                    name="price"
+                                                    value={course.price}
+                                                    onChange={handleChange}
+                                                    placeholder="0.00"
+                                                    disabled={!course.paid}
+                                                />
+                                            </Form.Group>
+                                        </div>
+
+                                        <div className="col-lg-2 mb-2">
+                                            <Form.Group>
+                                                <Form.Label className="mb-1 fw-bold">Duração estimada</Form.Label>
+                                                <Form.Control
+                                                    name="duration"
+                                                    value={course.duration}
+                                                    onChange={handleChange}
+                                                    placeholder="Ex: 10h, 4 semanas"
+                                                />
+                                            </Form.Group>
+                                        </div>
+                                    </div>
+
+                                    <div className="row mb-4">
+                                        <div className="col-lg-6 mb-2">
+                                            <Form.Label className="mb-2 fw-bold">Módulos do Curso</Form.Label>
+
+                                            <div className="d-flex mb-2" style={{ gap: "0.5rem" }}>
+                                                <Form.Control
+                                                    type="text"
+                                                    size="sm"
+                                                    value={moduleName}
+                                                    onChange={(e) => setModuleName(e.target.value)}
+                                                    onKeyPress={(e) => {
+                                                        if (e.key === "Enter") {
+                                                            e.preventDefault();
+                                                            handleAddModule();
+                                                        }
+                                                    }}
+                                                    placeholder="Adicionar novo módulo..."
+                                                    style={{ flex: 1 }}
+                                                />
+                                                <Button
+                                                    type="button"
+                                                    variant="outline-primary"
+                                                    size="sm"
+                                                    onClick={handleAddModule}
+                                                    style={{ minWidth: "40px" }}
+                                                >
+                                                    +
+                                                </Button>
+                                            </div>
+
+                                            {course.modules.length > 0 && (
+                                                <div className="d-flex flex-column gap-2">
+                                                    {course.modules.map((module, index) => (
+                                                        <div key={index} className="d-flex align-items-center p-1 border rounded">
+                                                            <span style={{ flex: 1 }}>
+                                                                {index + 1}. {module}
+                                                            </span>
                                                             <Button
                                                                 type="button"
                                                                 variant="link"
                                                                 size="sm"
                                                                 onClick={() => handleRemoveModule(index)}
                                                                 className="text-danger p-0 flex-shrink-0"
-                                                                style={{ textDecoration: "none", fontSize: "0.75rem" }}
+                                                                style={{ textDecoration: "none", fontSize: "0.875rem" }}
                                                             >
                                                                 ×
                                                             </Button>
                                                         </div>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        )}
-                                    </Form.Group>
-                                </div>
-                            </div>
+                                                    ))}
+                                                </div>
+                                            )}
+                                        </div>
 
-                            <div className="row mt-2">
-                                <div className="col-12">
-                                    <div className="d-flex justify-content-end" style={{ gap: "0.5rem" }}>
-                                        <Button variant="outline-secondary" onClick={handleCancel}>
-                                            Cancelar
-                                        </Button>
-                                        <Button
-                                            type="submit"
-                                            disabled={loading}
-                                            style={{
-                                                background: "linear-gradient(90deg, #7c3aed, #4f46e5)",
-                                                border: "none"
-                                            }}
-                                        >
-                                            {loading ? "Salvando..." : "Adicionar Curso"}
-                                        </Button>
+                                        <div className="col-lg-6 mb-2">
+                                            <Form.Group>
+                                                <Form.Label className="mb-1 fw-bold">Link de acesso</Form.Label>
+                                                <Form.Control
+                                                    type="url"
+                                                    name="accessLink"
+                                                    value={course.accessLink}
+                                                    onChange={handleChange}
+                                                    placeholder="https://..."
+                                                />
+                                            </Form.Group>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
+
+                                    <hr className="my-4" />
+
+                                    <div className="row mt-4">
+                                        <div className="col-12">
+                                            <div className="d-flex justify-content-end" style={{ gap: "0.5rem" }}>
+                                                <Button variant="outline-secondary" onClick={handleCancel}>
+                                                    Cancelar
+                                                </Button>
+                                                <Button
+                                                    type="submit"
+                                                    disabled={loading}
+                                                    style={{
+                                                        background: "linear-gradient(90deg, #7c3aed, #4f46e5)",
+                                                        border: "none"
+                                                    }}
+                                                >
+                                                    {loading ? "Salvando..." : "Adicionar Curso"}
+                                                </Button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </Form>
                             </Card.Body>
                         </Card>

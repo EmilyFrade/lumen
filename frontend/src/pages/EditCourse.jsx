@@ -243,13 +243,13 @@ function EditCourse() {
 
                             <Card.Body>
                                 {error && (
-                                    <Alert variant="danger" dismissible onClose={() => setError(null)} className="mb-3">
+                                    <Alert variant="danger" dismissible onClose={() => setError(null)} className="mb-2">
                                         {error}
                                     </Alert>
                                 )}
 
                                 <Form onSubmit={handleSubmit}>
-                                    <div className="row mb-3">
+                                    <div className="row mb-2">
                                         <div className="col-lg-6 mb-2">
                                             <Form.Group>
                                                 <Form.Label className="mb-1 fw-bold">Nome do curso *</Form.Label>
@@ -313,7 +313,7 @@ function EditCourse() {
                                         </div>
                                     </div>
 
-                                    <div className="row mb-3">
+                                    <div className="row mb-2">
                                         <div className="col-lg-6 mb-2">
                                             <Form.Group>
                                                 <Form.Label className="mb-1 fw-bold">Descrição</Form.Label>
@@ -370,7 +370,7 @@ function EditCourse() {
                                         </div>
                                     </div>
 
-                                    <div className="row mb-3">
+                                    <div className="row mb-2">
                                         <div className="col-12 mb-2">
                                             <Form.Group>
                                                 <Form.Label className="mb-1 fw-bold">Link de acesso</Form.Label>
@@ -386,8 +386,8 @@ function EditCourse() {
                                     </div>
 
                                     <div className="row mb-4">
-                                        <div className="col-lg-6 mb-3">
-                                            <Form.Label className="mb-3 fw-bold">Progresso do Curso</Form.Label>
+                                        <div className="col-lg-6 mb-2">
+                                            <Form.Label className="mb-2 fw-bold">Progresso do Curso</Form.Label>
                                             <div className="mb-2">
                                                 <div className="d-flex justify-content-between align-items-center mb-2">
                                                     <span className="text-muted small">0%</span>
@@ -419,8 +419,8 @@ function EditCourse() {
                                             </div>
                                         </div>
 
-                                        <div className="col-lg-6 mb-3">
-                                            <Form.Label className="mb-3 fw-bold d-flex align-items-center">
+                                        <div className="col-lg-6 mb-2">
+                                            <Form.Label className="mb-2 fw-bold d-flex align-items-center">
                                                 Minha Avaliação
                                             </Form.Label>
                                             <div className="d-flex align-items-center gap-2 mb-2">
@@ -475,10 +475,10 @@ function EditCourse() {
                                     </div>
 
                                     <div className="row mb-4">
-                                        <div className="col-lg-6 mb-3">
-                                            <Form.Label className="mb-3 fw-bold">Módulos do Curso</Form.Label>
+                                        <div className="col-lg-6 mb-2">
+                                            <Form.Label className="mb-2 fw-bold">Módulos do Curso</Form.Label>
                                             
-                                            <div className="d-flex mb-3" style={{ gap: "0.5rem" }}>
+                                            <div className="d-flex mb-2" style={{ gap: "0.5rem" }}>
                                                 <Form.Control
                                                     type="text"
                                                     size="sm"
@@ -545,7 +545,7 @@ function EditCourse() {
                                             )}
                                         </div>
 
-                                        <div className="col-lg-6 mb-3">
+                                        <div className="col-lg-6 mb-2">
                                             <Form.Group>
                                                 <Form.Label className="mb-2 fw-bold d-flex align-items-center">
                                                     Minhas Anotações
