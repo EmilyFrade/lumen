@@ -33,5 +33,7 @@ public class CourseDTO {
     private List<String> modules;
 
     private String notes;
+
+    private String accessLink;
 }
 
